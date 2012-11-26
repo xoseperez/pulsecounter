@@ -24,7 +24,9 @@
 #define VOLTAGE_REFERENCE 1100
 #define PULSES_PER_WATTHOUR 4
 
-#define REPORTS_PER_HOUR 360
+// The Xbee awakes every minute to send the report
+#define REPORTS_PER_HOUR 60
+#define SEND_BATTERY_EVERY_N_TRANSMISSIONS 10
 
 // ===========================================
 // Debugging
@@ -101,7 +103,9 @@ void sendAll() {
 
     sendTID();
     sendWatts();
-    sendBattery();
+    if (transmission_id % SEND_BATTERY_EVERY_N_TRANSMISSIONS == 0) {
+        sendBattery();
+    }
 
 }
 

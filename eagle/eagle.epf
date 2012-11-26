@@ -339,15 +339,13 @@ UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/xilinx-xc9.lbr"
 UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/xilinx-xcv.lbr"
 UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/zetex.lbr"
 UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/zilog.lbr"
-UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/SparkFun-Eagle-Libraries-master/SparkFun-Boards.lbr"
-UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/SparkFun-Eagle-Libraries-master/SparkFun-RF.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1665 39 2264 438"
+Loc="1665 39 2944 777"
 State=1
 Number=0
 
 [Desktop]
-Screen="2960 1050"
+Screen="2560 768"
 Window="Win_1"
