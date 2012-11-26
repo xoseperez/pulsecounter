@@ -1,17 +1,9 @@
-# Object files
+# Arduino
+
 *.o
+*.hex
+.dep
+.lib
 
-# Libraries
-*.lib
-*.a
-
-# Shared objects (inc. Windows DLLs)
-*.dll
-*.so
-*.so.*
-*.dylib
-
-# Executables
-*.exe
-*.out
-*.app
+# Eagle
+*.s#?
