@@ -15,8 +15,8 @@
 #define LDR_INTERRUPT_PIN 2
 #define BATT_PIN 3
 #define XBEE_SLEEP_PIN 4
-#define XBEE_RX_PIN 5
-#define XBEE_TX_PIN 6
+#define XBEE_TX_PIN 5
+#define XBEE_RX_PIN 6
 
 #define PULSE_BOUNCE_DELAY 100
 #define VOLTAGE_FACTOR 4.06
