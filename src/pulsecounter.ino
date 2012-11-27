@@ -24,7 +24,6 @@
 #define XBEE_TX_PIN 5
 #define XBEE_RX_PIN 6
 
-#define PULSE_BOUNCE_DELAY 100
 #define VOLTAGE_FACTOR 4.06
 #define VOLTAGE_REFERENCE 1100
 #define PULSES_PER_WATTHOUR 4
@@ -33,6 +32,7 @@
 #define SEND_WATTS_EVERY_N_PULSES 20
 #define SEND_BATTERY_EVERY_N_TRANSMISSIONS 10
 #define XBEE_WAKEUP_TIME 20
+#define XBEE_ASSOCIATE_TIME 1000
 
 // ===========================================
 // Debugging
@@ -51,17 +51,27 @@
 // ===========================================
 
 volatile int pulses = 0;
-int transmission_id = 0;
+int transmission_id = 1;
 volatile int ready_to_send = false;
 SoftwareSerial Xbee(XBEE_RX_PIN, XBEE_TX_PIN);
 
 // ===========================================
-// Methods
+// Interrupt routines
 // ===========================================
 
 void pulse() {
-    pulses++;
+    ++pulses;
 }
+
+#ifdef CYCLE_SLEEP_MODE
+    void xbee_awake() {
+        ready_to_send = true;
+    }
+#endif
+
+// ===========================================
+// Methods
+// ===========================================
 
 #ifdef PIN_SLEEP_MODE
     void xbeeSleep() {
@@ -71,12 +81,6 @@ void pulse() {
     void xbeeWake() {
         digitalWrite(XBEE_SLEEP_PIN, LOW);
         delay(XBEE_WAKEUP_TIME);
-    }
-#endif
-
-#ifdef CYCLE_SLEEP_MODE
-    void xbee_awake() {
-        ready_to_send = true;
     }
 #endif
 
@@ -128,12 +132,12 @@ void sendBattery() {
 
 void sendTID() {
 
-    // Update TID
-    ++transmission_id;
-
     // Sending data
     Xbee.print("TID:");
     Xbee.println(transmission_id);
+
+    // Update TID
+    ++transmission_id;
 
 }
 
@@ -152,6 +156,7 @@ void sendAll() {
 
     #ifdef PIN_SLEEP_MODE
         // Turning radio to sleep
+        // It should wait for the current transmission to finish
         xbeeSleep();
     #endif
 
@@ -165,9 +170,9 @@ void setup() {
     pinMode(XBEE_SLEEP_PIN, OUTPUT);
 
     #ifdef PIN_SLEEP_MODE
-        // Turn on radio and allow 1 second to link to coordinator
+        // Turn on radio and allow some time to link to coordinator
         xbeeWake();
-        delay(1000);
+        delay(XBEE_ASSOCIATE_TIME);
     #endif
 
     #ifdef DEBUG
