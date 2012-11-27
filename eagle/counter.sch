@@ -6223,6 +6223,17 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <junction x="30.48" y="81.28"/>
 </segment>
 </net>
+<net name="N$11" class="0">
+<segment>
+<pinref part="ARDUINO_MINI" gate="G$1" pin="5"/>
+<wire x1="88.9" y1="71.12" x2="76.2" y2="71.12" width="0.2032" layer="91"/>
+<wire x1="76.2" y1="71.12" x2="76.2" y2="66.04" width="0.2032" layer="91"/>
+<pinref part="XBEE" gate="G$1" pin="DOUT"/>
+<wire x1="76.2" y1="66.04" x2="71.12" y2="66.04" width="0.2032" layer="91"/>
+<junction x="71.12" y="66.04"/>
+<junction x="88.9" y="71.12"/>
+</segment>
+</net>
 </nets>
 </sheet>
 </sheets>
