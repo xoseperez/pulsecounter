@@ -91,7 +91,7 @@ void sendBattery() {
     int mV = map(reading, 0, 1023, 0, VOLTAGE_REFERENCE) * VOLTAGE_FACTOR;
 
     // Sending data
-    Xbee.print("BATT:");
+    Xbee.print("battery:");
     Xbee.println(mV);
 
 }
@@ -104,7 +104,7 @@ void sendBattery() {
         int wh = gather / PULSES_PER_WATTHOUR;
 
         // Sending data
-        Xbee.print("WH:");
+        Xbee.print("wh:");
         Xbee.println(wh);
 
         // Lowering the pulse count by the number of pulses reported
@@ -121,7 +121,7 @@ void sendBattery() {
         int watt = REPORTS_PER_HOUR * gather / PULSES_PER_WATTHOUR;
 
         // Sending data
-        Xbee.print("W:");
+        Xbee.print("w:");
         Xbee.println(watt);
 
         // Lowering the pulse count by the number of pulses reported
@@ -133,7 +133,7 @@ void sendBattery() {
 void sendTID() {
 
     // Sending data
-    Xbee.print("TID:");
+    Xbee.print("tid:");
     Xbee.println(transmission_id);
 
     // Update TID
@@ -186,8 +186,8 @@ void setup() {
     // Send HELLO
     // Don't know what happens if the radio is off when sending this,
     // probably the message gets lost...
-    Xbee.println("STATUS:1");
-    DEBUG_PRINTLN("HELLO");
+    Xbee.println("status:1");
+    DEBUG_PRINTLN("Hello");
 
     #ifdef PIN_SLEEP_MODE
         // Sleep radio
@@ -217,14 +217,14 @@ void loop() {
     if (ready_to_send) {
 
         ready_to_send = false;
-        DEBUG_PRINTLN("SENDING");
+        DEBUG_PRINTLN("Sending");
         sendAll();
 
     // If there is nothing to send then
     // enter power down state with ADC and BOD module disabled
     } else {
 
-        DEBUG_PRINTLN("PULSE");
+        DEBUG_PRINTLN("Pulse");
         #ifdef DEBUG
             delay(100);
         #endif
