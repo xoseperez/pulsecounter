@@ -130,17 +130,6 @@ void sendBattery() {
     }
 #endif
 
-void sendTID() {
-
-    // Sending data
-    Xbee.print("tid:");
-    Xbee.println(transmission_id);
-
-    // Update TID
-    ++transmission_id;
-
-}
-
 void sendAll() {
 
     #ifdef PIN_SLEEP_MODE
@@ -148,9 +137,8 @@ void sendAll() {
         xbeeWake();
     #endif
 
-    sendTID();
     sendPower();
-    if (transmission_id % SEND_BATTERY_EVERY_N_TRANSMISSIONS == 0) {
+    if (++transmission_id % SEND_BATTERY_EVERY_N_TRANSMISSIONS == 0) {
         sendBattery();
     }
 
