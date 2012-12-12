@@ -1,2 +1,3 @@
-export BOARD=uno
+export ARDUINODIR=~/local/arduino/
+export BOARD=leonardo
 export SERIALDEV=/dev/ttyACM0

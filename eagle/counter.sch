@@ -6076,13 +6076,10 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="86.36" y1="81.28" x2="86.36" y2="86.36" width="0.2032" layer="91"/>
 <pinref part="XBEE" gate="G$1" pin="GND"/>
 <wire x1="86.36" y1="86.36" x2="73.66" y2="86.36" width="0.2032" layer="91"/>
-<junction x="71.12" y="86.36"/>
-<junction x="88.9" y="81.28"/>
 <pinref part="C3" gate="G$1" pin="1"/>
 <wire x1="73.66" y1="86.36" x2="71.12" y2="86.36" width="0.2032" layer="91"/>
 <wire x1="73.66" y1="78.74" x2="73.66" y2="86.36" width="0.2032" layer="91"/>
 <junction x="73.66" y="86.36"/>
-<junction x="73.66" y="78.74"/>
 </segment>
 </net>
 <net name="N$3" class="0">
@@ -6091,17 +6088,14 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="111.76" y1="81.28" x2="114.3" y2="81.28" width="0.2032" layer="91"/>
 <wire x1="114.3" y1="81.28" x2="114.3" y2="53.34" width="0.2032" layer="91"/>
 <pinref part="CDS" gate="G$1" pin="1"/>
-<junction x="111.76" y="81.28"/>
 <pinref part="XBEE" gate="G$1" pin="VDD"/>
 <wire x1="71.12" y1="63.5" x2="73.66" y2="63.5" width="0.2032" layer="91"/>
 <wire x1="73.66" y1="63.5" x2="81.28" y2="63.5" width="0.2032" layer="91"/>
 <wire x1="81.28" y1="63.5" x2="81.28" y2="53.34" width="0.2032" layer="91"/>
 <wire x1="81.28" y1="53.34" x2="114.3" y2="53.34" width="0.2032" layer="91"/>
-<junction x="71.12" y="63.5"/>
 <junction x="114.3" y="53.34"/>
 <pinref part="C3" gate="G$1" pin="2"/>
 <wire x1="73.66" y1="71.12" x2="73.66" y2="63.5" width="0.2032" layer="91"/>
-<junction x="73.66" y="71.12"/>
 <junction x="73.66" y="63.5"/>
 </segment>
 </net>
@@ -6114,8 +6108,6 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="139.7" y1="88.9" x2="152.4" y2="88.9" width="0.2032" layer="91"/>
 <wire x1="139.7" y1="83.82" x2="139.7" y2="88.9" width="0.2032" layer="91"/>
 <junction x="139.7" y="88.9"/>
-<junction x="111.76" y="88.9"/>
-<junction x="152.4" y="88.9"/>
 </segment>
 </net>
 <net name="N$6" class="0">
@@ -6136,15 +6128,11 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="132.08" y1="43.18" x2="144.78" y2="43.18" width="0.2032" layer="91"/>
 <wire x1="144.78" y1="43.18" x2="144.78" y2="86.36" width="0.2032" layer="91"/>
 <junction x="144.78" y="86.36"/>
-<junction x="111.76" y="86.36"/>
-<junction x="152.4" y="86.36"/>
-<junction x="132.08" y="43.18"/>
 <pinref part="C2" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="33.02" x2="86.36" y2="30.48" width="0.2032" layer="91"/>
 <wire x1="86.36" y1="30.48" x2="144.78" y2="30.48" width="0.2032" layer="91"/>
 <wire x1="144.78" y1="30.48" x2="144.78" y2="43.18" width="0.2032" layer="91"/>
 <junction x="144.78" y="43.18"/>
-<junction x="86.36" y="33.02"/>
 </segment>
 </net>
 <net name="N$7" class="0">
@@ -6157,25 +6145,18 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="116.84" y1="73.66" x2="116.84" y2="78.74" width="0.2032" layer="91"/>
 <pinref part="ARDUINO_MINI" gate="G$1" pin="A3"/>
 <wire x1="116.84" y1="78.74" x2="111.76" y2="78.74" width="0.2032" layer="91"/>
-<junction x="111.76" y="78.74"/>
-<junction x="121.92" y="73.66"/>
 <pinref part="R2" gate="G$1" pin="2"/>
-<junction x="132.08" y="73.66"/>
-<junction x="139.7" y="73.66"/>
 </segment>
 </net>
 <net name="N$8" class="0">
 <segment>
 <pinref part="ARDUINO_MINI" gate="G$1" pin="2"/>
 <wire x1="86.36" y1="78.74" x2="88.9" y2="78.74" width="0.2032" layer="91"/>
-<junction x="88.9" y="78.74"/>
 <pinref part="R4" gate="G$1" pin="1"/>
 <wire x1="96.52" y1="43.18" x2="86.36" y2="43.18" width="0.2032" layer="91"/>
 <wire x1="86.36" y1="43.18" x2="86.36" y2="78.74" width="0.2032" layer="91"/>
-<junction x="96.52" y="43.18"/>
 <pinref part="C2" gate="G$1" pin="1"/>
 <wire x1="86.36" y1="43.18" x2="86.36" y2="40.64" width="0.2032" layer="91"/>
-<junction x="86.36" y="40.64"/>
 <junction x="86.36" y="43.18"/>
 </segment>
 </net>
@@ -6186,19 +6167,15 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <wire x1="83.82" y1="83.82" x2="83.82" y2="73.66" width="0.2032" layer="91"/>
 <pinref part="ARDUINO_MINI" gate="G$1" pin="4"/>
 <wire x1="83.82" y1="73.66" x2="88.9" y2="73.66" width="0.2032" layer="91"/>
-<junction x="71.12" y="83.82"/>
-<junction x="88.9" y="73.66"/>
 </segment>
 </net>
 <net name="N$1" class="0">
 <segment>
 <pinref part="CDS" gate="G$1" pin="2"/>
 <pinref part="R3" gate="G$1" pin="1"/>
-<junction x="121.92" y="43.18"/>
 <wire x1="121.92" y1="43.18" x2="114.3" y2="43.18" width="0.2032" layer="91"/>
 <pinref part="R4" gate="G$1" pin="2"/>
 <wire x1="114.3" y1="43.18" x2="106.68" y2="43.18" width="0.2032" layer="91"/>
-<junction x="106.68" y="43.18"/>
 </segment>
 </net>
 <net name="N$9" class="0">
@@ -6206,32 +6183,17 @@ Source: http://optoelectronics.perkinelmer.com/content/Datasheets/DTS_vt900serie
 <pinref part="XBEE" gate="G$1" pin="DIN"/>
 <pinref part="ARDUINO_MINI" gate="G$1" pin="6"/>
 <wire x1="71.12" y1="68.58" x2="88.9" y2="68.58" width="0.2032" layer="91"/>
-<junction x="71.12" y="68.58"/>
-<junction x="88.9" y="68.58"/>
 </segment>
 </net>
 <net name="N$10" class="0">
 <segment>
-<pinref part="XBEE" gate="G$1" pin="DIO9"/>
-<wire x1="30.48" y1="81.28" x2="27.94" y2="81.28" width="0.2032" layer="91"/>
-<wire x1="27.94" y1="81.28" x2="27.94" y2="91.44" width="0.2032" layer="91"/>
 <wire x1="27.94" y1="91.44" x2="81.28" y2="91.44" width="0.2032" layer="91"/>
 <wire x1="81.28" y1="91.44" x2="81.28" y2="76.2" width="0.2032" layer="91"/>
 <pinref part="ARDUINO_MINI" gate="G$1" pin="3"/>
 <wire x1="81.28" y1="76.2" x2="88.9" y2="76.2" width="0.2032" layer="91"/>
-<junction x="88.9" y="76.2"/>
-<junction x="30.48" y="81.28"/>
-</segment>
-</net>
-<net name="N$11" class="0">
-<segment>
-<pinref part="ARDUINO_MINI" gate="G$1" pin="5"/>
-<wire x1="88.9" y1="71.12" x2="76.2" y2="71.12" width="0.2032" layer="91"/>
-<wire x1="76.2" y1="71.12" x2="76.2" y2="66.04" width="0.2032" layer="91"/>
-<pinref part="XBEE" gate="G$1" pin="DOUT"/>
-<wire x1="76.2" y1="66.04" x2="71.12" y2="66.04" width="0.2032" layer="91"/>
-<junction x="71.12" y="66.04"/>
-<junction x="88.9" y="71.12"/>
+<wire x1="27.94" y1="91.44" x2="27.94" y2="83.82" width="0.2032" layer="91"/>
+<pinref part="XBEE" gate="G$1" pin="CTS"/>
+<wire x1="27.94" y1="83.82" x2="30.48" y2="83.82" width="0.2032" layer="91"/>
 </segment>
 </net>
 </nets>

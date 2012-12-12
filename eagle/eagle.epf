@@ -342,7 +342,7 @@ UsedLibrary="/home/xose/local/eagle-6.3.0/lbr/zilog.lbr"
 
 [Win_1]
 Type="Control Panel"
-Loc="1665 39 2944 777"
+Loc="35 71 1314 809"
 State=1
 Number=0
 
