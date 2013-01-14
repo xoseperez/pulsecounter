@@ -1,5 +1,21 @@
 /*
+
   Smartmeter pulse counter
+  Copyright (C) 2012 by Xose Pérez <xose dot perez at gmail dot com>
+
+  This program is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  This program is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
 */
 
 #include <LowPower.h>
@@ -9,10 +25,6 @@
 // ===========================================
 
 //#define DEBUG
-
-// Define the Xbee mode (one or the other, not both)
-//#define PIN_SLEEP_MODE
-#define CYCLE_SLEEP_MODE
 
 #define LDR_INTERRUPT 0
 #define XBEE_INTERRUPT 1
@@ -25,16 +37,10 @@
 #define VOLTAGE_FACTOR 4.06
 #define VOLTAGE_REFERENCE 1100
 #define PULSES_PER_WATTHOUR 4
-#define XBEE_WAKEUP_TIME 20
 #define XBEE_ASSOCIATION_TIME 2000
 #define XBEE_AFTER_SEND_DELAY 20
 #define SEND_BATTERY_EVERY_N_TRANSMISSIONS 10
-
-// Parameters for CYCLE_SLEEP_MODE
 #define REPORTS_PER_HOUR 60
-
-// Parameters for PIN_SLEEP_MODE
-#define SEND_WATTS_EVERY_N_PULSES 20
 
 // ===========================================
 // Globals
@@ -52,11 +58,9 @@ void pulse() {
     ++pulses;
 }
 
-#ifdef CYCLE_SLEEP_MODE
-    void xbee_awake() {
-        ready_to_send = true;
-    }
-#endif
+void xbee_awake() {
+    ready_to_send = true;
+}
 
 // ===========================================
 // Methods
@@ -68,7 +72,6 @@ void xbeeSleep() {
 
 void xbeeWake() {
     digitalWrite(XBEE_SLEEP_PIN, LOW);
-    delay(XBEE_WAKEUP_TIME);
 }
 
 void sendBattery() {
@@ -84,59 +87,28 @@ void sendBattery() {
 
 }
 
-#ifdef PIN_SLEEP_MODE
-    void sendPower() {
+void sendPower() {
 
-        // Calculating the watts to report
-        int gather = pulses - pulses % SEND_WATTS_EVERY_N_PULSES;
-        int wh = gather / PULSES_PER_WATTHOUR;
+    // Calculating the watts to report
+    int gather = pulses;
+    int watt = REPORTS_PER_HOUR * gather / PULSES_PER_WATTHOUR;
 
-        // Sending data
-        Serial.print("energy:");
-        Serial.println(wh);
-        delay(XBEE_AFTER_SEND_DELAY);
+    // Sending data
+    Serial.print("power:");
+    Serial.println(watt);
+    delay(XBEE_AFTER_SEND_DELAY);
 
-        // Lowering the pulse count by the number of pulses reported
-        pulses -= gather;
+    // Lowering the pulse count by the number of pulses reported
+    pulses -= gather;
 
-    }
-#endif
-
-#ifdef CYCLE_SLEEP_MODE
-    void sendPower() {
-
-        // Calculating the watts to report
-        int gather = pulses;
-        int watt = REPORTS_PER_HOUR * gather / PULSES_PER_WATTHOUR;
-
-        // Sending data
-        Serial.print("power:");
-        Serial.println(watt);
-        delay(XBEE_AFTER_SEND_DELAY);
-
-        // Lowering the pulse count by the number of pulses reported
-        pulses -= gather;
-
-    }
-#endif
+}
 
 void sendAll() {
-
-    #ifdef PIN_SLEEP_MODE
-        // Awaking radio
-        xbeeWake();
-    #endif
 
     sendPower();
     if (++transmission_id % SEND_BATTERY_EVERY_N_TRANSMISSIONS == 0) {
         sendBattery();
     }
-
-    #ifdef PIN_SLEEP_MODE
-        // Turning radio to sleep
-        // It should wait for the current transmission to finish
-        xbeeSleep();
-    #endif
 
 }
 
@@ -170,10 +142,8 @@ void setup() {
     // Allow pulse to trigger interrupt on rising
     attachInterrupt(LDR_INTERRUPT, pulse, RISING);
 
-    #ifdef CYCLE_SLEEP_MODE
-        // Enable interrupt on xbee awaking
-        attachInterrupt(XBEE_INTERRUPT, xbee_awake, FALLING);
-    #endif
+    // Enable interrupt on xbee awaking
+    attachInterrupt(XBEE_INTERRUPT, xbee_awake, FALLING);
 
 }
 
@@ -181,13 +151,6 @@ void loop() {
 
     // Enter power down state with ADC and BOD module disabled
     LowPower.powerDown(SLEEP_FOREVER, ADC_OFF, BOD_OFF);
-
-    #ifdef PIN_SLEEP_MODE
-        // I am sending every SEND_WATTS_EVERY_N_PULSES pulses
-        // If the frequency is too high the module operation
-        // will space the transmissions
-        ready_to_send = (pulses >= SEND_WATTS_EVERY_N_PULSES and pulses % SEND_WATTS_EVERY_N_PULSES == 0);
-    #endif
 
     // Check if I have to send a report
     if (ready_to_send) {
