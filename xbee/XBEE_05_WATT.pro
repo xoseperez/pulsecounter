@@ -35,9 +35,9 @@ XB24-ZB_28A7.mxi
 [A]CT=64
 [A]GT=3E8
 [A]CC=2B
-[A]SM=4
-[A]ST=3E8
-[A]SP=7D0
+[A]SM=5
+[A]ST=C8
+[A]SP=7F4
 [A]SN=3
 [A]SO=6
 [A]PO=0
