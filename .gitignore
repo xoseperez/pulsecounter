@@ -4,6 +4,8 @@
 *.hex
 .dep
 .lib
+.build
 
 # Eagle
 *.s#?
+*.b#?
